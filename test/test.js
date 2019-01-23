@@ -8,6 +8,10 @@ describe('#effectiveDamage()', () => {
     assert.equal(dc.effectiveDamage(100, 50, 30), 83);
   });
 
+  it('ダメージは小数点以下を四捨五入して整数にする', () => {
+    assert.equal(dc.effectiveDamage(620, 100, 30), 365);
+  });
+
   it('負の異常値におけるダメージ計算ができる', () => {
     assert.equal(dc.effectiveDamage(-1, 0, 0), 0);
     assert.equal(dc.effectiveDamage(0, -1, 0), 0);
@@ -22,10 +26,6 @@ describe('#effectiveDamage()', () => {
 
   it('実効防御力は0未満にならない', () => {
     assert.equal(dc.effectiveDamage(500, 100, 800), 500);
-  });
-
-  it('ダメージは小数点以下を四捨五入して整数にする', () => {
-    assert.equal(dc.effectiveDamage(620, 100, 30), 365);
   });
 
 });
